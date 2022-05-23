@@ -219,13 +219,14 @@ public class ProductDAO {
      public void addPurchaseDAO(ProductDTO productdto){
 
         try {
-                    String q = "INSERT INTO purchaseinfo VALUES(null,?,?,?,?,?)";
+                    String q = "INSERT INTO purchaseinfo VALUES(null,?,?,?,?,?,?)";
                     pstmt = (PreparedStatement) con.prepareStatement(q);
                     pstmt.setString(1, productdto.getSupplierCode());
                     pstmt.setString(2, productdto.getcodeproduit());
                     pstmt.setString(3, productdto.getDate());
                     pstmt.setInt(4, productdto.getquantite());
                     pstmt.setDouble(5, productdto.getTotalCost());
+                    pstmt.setString(6, productdto.getTypedeproduit());
                     pstmt.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Inséré avec succès");
                 } catch (Exception e) {
@@ -233,13 +234,15 @@ public class ProductDAO {
                 }
         
             String codeproduit=productdto.getcodeproduit();
+            
             if(stocks.checkStock(codeproduit, stmt)==true){
                 try {
                     String q = "UPDATE currentstocks SET quantite=quantite+? WHERE codeproduit=?";
                     pstmt = (PreparedStatement) con.prepareStatement(q);
                     pstmt.setDouble(1, productdto.getquantite());
+                   
                     pstmt.setString(2, productdto.getcodeproduit());
-
+                  
                     pstmt.executeUpdate();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -405,7 +408,7 @@ public class ProductDAO {
    
     public ResultSet getPurchaseResult() {
         try {
-            String query = "SELECT purchaseid,purchaseinfo.codeproduit,Produit,quantite,totalcost FROM purchaseinfo INNER JOIN products ON products.codeproduit=purchaseinfo.codeproduit ORDER BY purchaseid";
+            String query = "SELECT purchaseid,purchaseinfo.codeproduit,Produit,quantite,totalcost,purchaseinfo.Typedeproduit FROM purchaseinfo INNER JOIN products ON products.codeproduit=purchaseinfo.codeproduit ORDER BY purchaseid";
             rs = stmt.executeQuery(query);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -445,7 +448,7 @@ public class ProductDAO {
      
      public ResultSet getSearchPurchaseQueryResult(String searchTxt) {
         try {
-            String query = "SELECT purchaseid,purchaseinfo.codeproduit,Produit,quantite,totalcost FROM purchaseinfo INNER JOIN products ON products.codeproduit=purchaseinfo.codeproduit WHERE purchaseinfo.codeproduit LIKE '%"+searchTxt+"%' OR Produit LIKE '%"+searchTxt+"%' ORDER BY purchaseid";
+            String query = "SELECT purchaseid,purchaseinfo.codeproduit,Produit,quantite,totalcost,Typedeproduit FROM purchaseinfo INNER JOIN products ON products.codeproduit=purchaseinfo.codeproduit WHERE purchaseinfo.codeproduit LIKE '%"+searchTxt+"%' OR Produit LIKE '%"+searchTxt+"%' ORDER BY purchaseid";
             rs = stmt.executeQuery(query);
         } catch (SQLException e) {
             e.printStackTrace();

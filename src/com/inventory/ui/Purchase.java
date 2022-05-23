@@ -71,6 +71,8 @@ table.getColumnModel().getColumn(4).setMaxWidth(0);
         productCodeLab1 = new javax.swing.JLabel();
         costPriceTxt = new javax.swing.JTextField();
         dateChooser = new com.toedter.calendar.JDateChooser();
+        TypedeproduitTxt = new javax.swing.JTextField();
+        quatityLab2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         searchTxt = new javax.swing.JTextField();
@@ -189,6 +191,15 @@ table.getColumnModel().getColumn(4).setMaxWidth(0);
             }
         });
 
+        TypedeproduitTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        TypedeproduitTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TypedeproduitTxtActionPerformed(evt);
+            }
+        });
+
+        quatityLab2.setText("Tyoe de produit");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -229,7 +240,8 @@ table.getColumnModel().getColumn(4).setMaxWidth(0);
                                             .addGap(1, 1, 1)
                                             .addComponent(quatityLab1)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(productCodeLab1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(productCodeLab1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(quatityLab2))
                                     .addGap(68, 68, 68)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(productCodeTxt)
@@ -237,7 +249,10 @@ table.getColumnModel().getColumn(4).setMaxWidth(0);
                                             .addGap(0, 0, Short.MAX_VALUE)
                                             .addComponent(costPriceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(quantityTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(quantityTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGap(6, 6, 6)
+                                            .addComponent(TypedeproduitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -266,6 +281,10 @@ table.getColumnModel().getColumn(4).setMaxWidth(0);
                     .addComponent(productCodeLab1)
                     .addComponent(quantityTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(quatityLab1))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TypedeproduitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quatityLab2))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -493,6 +512,7 @@ table.getColumnModel().getColumn(4).setMaxWidth(0);
         productNameLab.setText("");
         dateChooser.setDate(null);
         productCodeTxt.setText("");
+        TypedeproduitTxt.setText("");
     }//GEN-LAST:event_refreshBttnActionPerformed
 
     private void productsPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productsPanelMouseClicked
@@ -501,6 +521,7 @@ table.getColumnModel().getColumn(4).setMaxWidth(0);
         productNameLab.setText("");
         productNameLab.setVisible(false);
         productCodeTxt.setText("");
+        TypedeproduitTxt.setText("");
     }//GEN-LAST:event_productsPanelMouseClicked
 
     private void productCodeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productCodeTxtActionPerformed
@@ -513,6 +534,7 @@ table.getColumnModel().getColumn(4).setMaxWidth(0);
         productNameLab.setVisible(false);
         dateChooser.setDate(null);
         productCodeTxt.setText("");
+        TypedeproduitTxt.setText("");
     }//GEN-LAST:event_clearBttnMouseClicked
 
     private void deleteBttnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteBttnMouseClicked
@@ -552,6 +574,8 @@ table.getColumnModel().getColumn(4).setMaxWidth(0);
                         Double costPrice=Double.parseDouble(costPriceTxt.getText());
                         Double totalCost = costPrice*Integer.parseInt(quantityTxt.getText());
                         productdto.setTotalCost(totalCost);
+                         productdto.setTypedeproduit(TypedeproduitTxt.getText());
+                        
                         //                productdto.setUserId(userId);
                         new ProductDAO().addPurchaseDAO(productdto);
                         loadDatas();
@@ -605,6 +629,10 @@ table.getColumnModel().getColumn(4).setMaxWidth(0);
         // TODO add your handling code here:
     }//GEN-LAST:event_costPriceTxtKeyReleased
 
+    private void TypedeproduitTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TypedeproduitTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TypedeproduitTxtActionPerformed
+
     public void suppliersName(){
         ResultSet rs=new ProductDTO().getSuppliersName();
         try{
@@ -620,6 +648,7 @@ table.getColumnModel().getColumn(4).setMaxWidth(0);
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TypedeproduitTxt;
     private javax.swing.JLabel addProduct;
     private javax.swing.JLabel clearBttn;
     private javax.swing.JComboBox comboBox;
@@ -648,6 +677,7 @@ table.getColumnModel().getColumn(4).setMaxWidth(0);
     private javax.swing.JLabel purchasedDateLab;
     private javax.swing.JTextField quantityTxt;
     private javax.swing.JLabel quatityLab1;
+    private javax.swing.JLabel quatityLab2;
     private javax.swing.JButton refreshBttn;
     private javax.swing.JLabel searchByLab;
     private javax.swing.JTextField searchTxt;

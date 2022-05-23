@@ -503,7 +503,7 @@ table.getColumnModel().getColumn(5).setMaxWidth(0);
         try{
             ResultSet rs=new CustomerDAO().getCustomersName(customerCodeTxt.getText());
             if(rs.next()){
-                customerNameLab.setText("Name: "+rs.getString("Nom") + " | Location: "+rs.getString("location"));
+                customerNameLab.setText("Name: "+rs.getString("Nom") + " | Email: "+rs.getString("Email"));
             }else{
                 customerNameLab.setText("Non associé à des professeurs!");
             }

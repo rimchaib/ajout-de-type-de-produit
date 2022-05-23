@@ -71,16 +71,16 @@ public class CustomerDAO {
                         String getAllCustomers="SELECT * FROM customers";
                         rs=stmt.executeQuery(getAllCustomers);
                         if(!rs.next()){
-                            codeprof="prof"+"1"; 
+                            codeprof="cus"+"1"; 
                         }
                         else{
                             String getAllCustomersInDescOrder="SELECT * FROM customers ORDER by cid DESC";
                             rs=stmt.executeQuery(getAllCustomersInDescOrder);
                             if(rs.next()){
                                 oldcodeprof=rs.getString("codeprof");
-                                Integer scode=Integer.parseInt(oldcodeprof.substring(4));
+                                Integer scode=Integer.parseInt(oldcodeprof.substring(3));
                                 scode++;    
-                                codeprof="prof"+scode;
+                                codeprof="cus"+scode;
                             }
                         }
                             String insertCustomers = "INSERT INTO customers VALUES(null,?,?,?,?,?,?)";
