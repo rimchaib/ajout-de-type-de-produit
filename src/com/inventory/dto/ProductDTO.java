@@ -29,6 +29,7 @@ public class ProductDTO {
     private String codeprof;
     private Double totalCost;
     private Double totalRevenue;
+    private String Typedeproduit;
 
     public int getProductId() {
         return productId;
@@ -131,6 +132,13 @@ public class ProductDTO {
 
     public void setReference(String Reference) {
         this.Reference = Reference;
+    }
+     public String getTypedeproduit() {
+        return Typedeproduit;
+    }
+
+    public void setTypedeproduit(String Typedeproduit) {
+        this.Typedeproduit = Typedeproduit;
     }
 
     public int getUserId() {

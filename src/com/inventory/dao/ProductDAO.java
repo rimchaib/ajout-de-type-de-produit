@@ -167,7 +167,7 @@ public class ProductDAO {
     
     public void addProductDAO(ProductDTO productdto) {
          try{
-                String query = "SELECT * FROM products WHERE Produit='"+productdto.getProduit()+"' AND costprice='"+productdto.getCostPrice()+"' AND sellingprice='"+productdto.getSellingPrice()+"' AND Reference='"+productdto.getReference()+"'";
+                String query = "SELECT * FROM products WHERE Produit='"+productdto.getProduit()+"' AND costprice='"+productdto.getCostPrice()+"' AND sellingprice='"+productdto.getSellingPrice()+"' AND Reference='"+productdto.getReference()+"' AND Typedeproduit='"+productdto.getTypedeproduit()+"'";
                 rs=stmt.executeQuery(query);
                 if(rs.next()){
                     JOptionPane.showMessageDialog(null,"Le même produit a déjà été ajouté!");
@@ -199,13 +199,14 @@ public class ProductDAO {
                             codeproduit="prod"+pcode;
                         }
                     }
-                    String q = "INSERT INTO products VALUES(null,?,?,?,?,?)";
+                    String q = "INSERT INTO products VALUES(null,?,?,?,?,?,?)";
                     pstmt = (PreparedStatement) con.prepareStatement(q);
                     pstmt.setString(1, codeproduit);
                     pstmt.setString(2, productdto.getProduit());
                     pstmt.setDouble(3, productdto.getCostPrice());
                     pstmt.setDouble(4, productdto.getSellingPrice());
                     pstmt.setString(5, productdto.getReference());
+                    pstmt.setString(6, productdto.getTypedeproduit());
 
                     pstmt.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Inséré avec succès ! Vous pouvez maintenant acheter le produit.");
@@ -266,13 +267,14 @@ public class ProductDAO {
     
     public void editProductDAO(ProductDTO productdto) {
         try {
-                String query = "UPDATE products SET Produit=?,costprice=?,sellingprice=?,Reference=? WHERE codeproduit=?";
+                String query = "UPDATE products SET Produit=?,costprice=?,sellingprice=?,Reference=?,Typedeproduit=? WHERE codeproduit=?";
                 pstmt = (PreparedStatement) con.prepareStatement(query);
                 pstmt.setString(1, productdto.getProduit());
                 pstmt.setDouble(2, productdto.getCostPrice());
                 pstmt.setDouble(3, productdto.getSellingPrice());
                 pstmt.setString(4, productdto.getReference());
-                pstmt.setString(5, productdto.getcodeproduit());
+                pstmt.setString(5, productdto.getTypedeproduit());
+                pstmt.setString(6, productdto.getcodeproduit());
                 pstmt.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Mis à jour avec succés");
             } catch (Exception e) {
@@ -282,81 +284,7 @@ public class ProductDAO {
     }//end of method editUserDTO
     
    
-    /*
-    public void editStock1(ProductDTO productdto,int quantite,String pCode){
-        String codeproduit=productdto.getcodeproduit();
-                try {
-                    if(productdto.getquantite()>quantite){
-                         String q = "UPDATE currentstocks SET Produit=?,quantite=quantite+? WHERE codeproduit=?";
-                         pstmt = (PreparedStatement) con.prepareStatement(q);
-                         pstmt.setString(1, productdto.getProduit());
-                         int n=productdto.getquantite()-quantite;
-                         pstmt.setDouble(2, n);
-                         pstmt.setString(3, productdto.getcodeproduit());
-                         pstmt.executeUpdate();
-                    }else if(productdto.getquantite()<quantite){
-                         String q = "UPDATE currentstocks SET Produit=?,quantite=quantite-? WHERE codeproduit=?";
-                         pstmt = (PreparedStatement) con.prepareStatement(q);
-                         pstmt.setString(1, productdto.getProduit());
-                         int n=quantite-productdto.getquantite();
-                         pstmt.setDouble(2, n);
-                         pstmt.setString(3, productdto.getcodeproduit());
-                         pstmt.executeUpdate();
-                    }else{
-                        String q = "UPDATE currentstocks SET Produit=?,quantite=? WHERE codeproduit=?";
-                        pstmt = (PreparedStatement) con.prepareStatement(q);
-                        pstmt.setString(1, productdto.getProduit());
-                        pstmt.setDouble(2, productdto.getquantite());
-                        pstmt.setString(3, productdto.getcodeproduit());
-                        pstmt.executeUpdate();
-                    }   
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }            
-    }
-    
-    public void editStock2(ProductDTO productdto,int quantite,String pCode){
-        String codeproduit=productdto.getcodeproduit();
-        if(checkStock(codeproduit)==true){
-            try{
-                String q = "UPDATE currentstocks SET Produit=?,quantite=quantite+? WHERE codeproduit=?";
-                pstmt = (PreparedStatement) con.prepareStatement(q);
-                pstmt.setString(1, productdto.getProduit());
-                pstmt.setInt(2, productdto.getquantite());
-                pstmt.setString(3, productdto.getcodeproduit());
-                pstmt.executeUpdate();
-
-                String q2 = "UPDATE currentstocks SET quantite=quantite-? WHERE codeproduit=?";
-                pstmt = (PreparedStatement) con.prepareStatement(q2);
-                pstmt.setInt(1, productdto.getquantite());
-                pstmt.setString(2, pCode);
-                pstmt.executeUpdate();
-            }catch(Exception e){
-                 e.printStackTrace();   
-            }
-        }else if(checkStock(codeproduit)==false){
-            try{
-                String q = "INSERT INTO currentstocks VALUES(?,?,?)";
-                pstmt = (PreparedStatement) con.prepareStatement(q);
-                pstmt.setString(1, productdto.getcodeproduit());
-                pstmt.setString(2, productdto.getProduit());
-                pstmt.setInt(3, productdto.getquantite());
-                pstmt.executeUpdate();
-                JOptionPane.showMessageDialog(null,productdto.getcodeproduit()+" "+productdto.getProduit());
-                
-                String q2 = "UPDATE currentstocks SET quantite=quantite-? WHERE codeproduit=?";
-                pstmt = (PreparedStatement) con.prepareStatement(q2);
-                pstmt.setInt(1, productdto.getquantite());
-                pstmt.setString(2, pCode);
-                pstmt.executeUpdate();
-
-            }catch(Exception e){
-                 e.printStackTrace();   
-            }
-         }
-         
-    }
-    */
+ 
     
     public void editStock(String val,int q){
         try{
@@ -467,7 +395,7 @@ public class ProductDAO {
 
     public ResultSet getQueryResult() {
         try {
-            String query = "SELECT codeproduit,Produit,costprice,sellingprice,Reference FROM products ORDER BY pid";
+            String query = "SELECT codeproduit,Produit,costprice,sellingprice,Reference,Typedeproduit FROM products ORDER BY pid";
             rs = stmt.executeQuery(query);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -507,7 +435,7 @@ public class ProductDAO {
     
      public ResultSet getSearchProductsQueryResult(String searchTxt) {
         try {
-            String query = "SELECT pid,codeproduit,Produit,costprice,sellingprice,Reference FROM products WHERE Produit LIKE '%"+searchTxt+"%' OR Reference LIKE '%"+searchTxt+"%' OR codeproduit LIKE '%"+searchTxt+"%'";
+            String query = "SELECT pid,codeproduit,Produit,costprice,sellingprice,Reference,Typedeproduit FROM products WHERE Produit LIKE '%"+searchTxt+"%' OR Reference LIKE '%"+searchTxt+"%' OR Typedeproduit LIKE '%"+searchTxt+"%' OR codeproduit LIKE '%"+searchTxt+"%'";
             rs = stmt.executeQuery(query);
         } catch (SQLException e) {
             e.printStackTrace();

@@ -77,6 +77,8 @@ table.getColumnModel().getColumn(3).setMaxWidth(0);
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         productCodeTxt = new javax.swing.JTextField();
+        TypedeproduitTxt = new javax.swing.JTextField();
+        brandLab1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         searchTxt = new javax.swing.JTextField();
@@ -172,6 +174,15 @@ table.getColumnModel().getColumn(3).setMaxWidth(0);
             }
         });
 
+        TypedeproduitTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        TypedeproduitTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TypedeproduitTxtActionPerformed(evt);
+            }
+        });
+
+        brandLab1.setText("Type de produit");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -207,16 +218,21 @@ table.getColumnModel().getColumn(3).setMaxWidth(0);
                                 .addComponent(costPriceLab, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(productNameLab, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(productNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(brandTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(sellingPriceTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                                    .addComponent(costPriceTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addComponent(brandLab1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(12, 12, 12)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TypedeproduitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(productNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(brandTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(sellingPriceTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                        .addComponent(costPriceTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -233,6 +249,10 @@ table.getColumnModel().getColumn(3).setMaxWidth(0);
                     .addComponent(brandLab)
                     .addComponent(brandTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TypedeproduitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(brandLab1))
+                .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(priceLab1)
                     .addComponent(sellingPriceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -327,7 +347,7 @@ table.getColumnModel().getColumn(3).setMaxWidth(0);
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(productsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 75, Short.MAX_VALUE))
+                .addGap(0, 58, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,6 +368,7 @@ static String productCode;
         costPriceTxt.setText(val[2].toString());
         sellingPriceTxt.setText(val[3].toString());
         brandTxt.setText(val[4].toString());
+        TypedeproduitTxt.setText(val[5].toString());
         productCode=val[1].toString();
         
         
@@ -372,6 +393,7 @@ table.getColumnModel().getColumn(4).setMaxWidth(0);
         costPriceTxt.setText("");
         sellingPriceTxt.setText("");
         brandTxt.setText("");
+        TypedeproduitTxt.setText("");
     }//GEN-LAST:event_productsPanelMouseClicked
 
     private void refreshBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBttnActionPerformed
@@ -381,6 +403,7 @@ table.getColumnModel().getColumn(4).setMaxWidth(0);
         costPriceTxt.setText("");
         sellingPriceTxt.setText("");
         brandTxt.setText("");
+        TypedeproduitTxt.setText("");
     }//GEN-LAST:event_refreshBttnActionPerformed
 
     private void clearBttnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearBttnMouseClicked
@@ -389,6 +412,7 @@ table.getColumnModel().getColumn(4).setMaxWidth(0);
         costPriceTxt.setText("");
         sellingPriceTxt.setText("");
         brandTxt.setText("");
+        TypedeproduitTxt.setText("");
     }//GEN-LAST:event_clearBttnMouseClicked
 
     private void deleteBttnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteBttnMouseClicked
@@ -418,6 +442,7 @@ table.getColumnModel().getColumn(3).setMaxWidth(0);
                 productdto.setCostPrice(Double.parseDouble(costPriceTxt.getText()));
                 productdto.setSellingPrice(Double.parseDouble(sellingPriceTxt.getText()));
                 productdto.setReference((brandTxt.getText()));
+                productdto.setTypedeproduit((TypedeproduitTxt.getText()));
                 productdto.setUserId(userId);
                 new ProductDAO().editProductDAO(productdto);
 
@@ -450,6 +475,7 @@ table.getColumnModel().getColumn(3).setMaxWidth(0);
             productdto.setCostPrice(Double.parseDouble(costPriceTxt.getText()));
             productdto.setSellingPrice(Double.parseDouble(sellingPriceTxt.getText()));
             productdto.setReference((brandTxt.getText()));
+            productdto.setTypedeproduit((TypedeproduitTxt.getText()));
             productdto.setUserId(userId);
             new ProductDAO().addProductDAO(productdto);
             loadDatas();
@@ -469,6 +495,10 @@ table.getColumnModel().getColumn(3).setMaxWidth(0);
     private void brandTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brandTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_brandTxtActionPerformed
+
+    private void TypedeproduitTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TypedeproduitTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TypedeproduitTxtActionPerformed
 
     public void loadDatas(){
             try{
@@ -503,8 +533,10 @@ table.getColumnModel().getColumn(3).setMaxWidth(0);
     }
 */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TypedeproduitTxt;
     private javax.swing.JLabel addProduct;
     private javax.swing.JLabel brandLab;
+    private javax.swing.JLabel brandLab1;
     private javax.swing.JTextField brandTxt;
     private javax.swing.JLabel clearBttn;
     private javax.swing.JLabel costPriceLab;

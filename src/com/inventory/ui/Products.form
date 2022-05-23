@@ -18,7 +18,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="productsPanel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="75" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="58" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -188,7 +188,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="productCodeTxt" min="-2" pref="13" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="priceLab1" alignment="1" min="-2" pref="0" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
@@ -200,16 +200,23 @@
                                           <Component id="productNameLab" min="-2" pref="73" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="brandLab1" max="32767" attributes="0"/>
+                                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="productNameTxt" alignment="1" min="-2" pref="194" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="brandTxt" min="-2" pref="194" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="sellingPriceTxt" alignment="1" pref="1" max="32767" attributes="0"/>
-                                              <Component id="costPriceTxt" alignment="1" min="-2" pref="0" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="TypedeproduitTxt" min="-2" pref="194" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="productNameTxt" alignment="1" min="-2" pref="194" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="brandTxt" min="-2" pref="194" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="sellingPriceTxt" alignment="1" pref="1" max="32767" attributes="0"/>
+                                                  <Component id="costPriceTxt" alignment="1" min="-2" pref="0" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -235,6 +242,11 @@
                               <Component id="brandTxt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="TypedeproduitTxt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="brandLab1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="priceLab1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="sellingPriceTxt" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
@@ -402,6 +414,25 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="productCodeTxtActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JTextField" name="TypedeproduitTxt">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder roundedCorners="true">
+                          <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                        </LineBorder>
+                      </Border>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TypedeproduitTxtActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="brandLab1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Type de produit"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
