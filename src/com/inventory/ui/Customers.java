@@ -425,15 +425,14 @@ public class Customers extends javax.swing.JPanel {
         if(table.getSelectedRow()<0){
             JOptionPane.showMessageDialog(null,"Sélectionnez d'abord les données d'un tableau!");
         }else{
-            if(customersNameTxt.getText().equals("") || locationTxt.getText().equals("") || 
-                    phoneTxt.getText().equals("")|| 
+            if(customersNameTxt.getText().equals("") || locationTxt.getText().equals("") || phoneTxt.getText().equals("")|| 
                     cintxt.getText().equals("")|| 
                     depTxt.getText().equals("")){
                 JOptionPane.showMessageDialog(null,"Veuillez remplir tous les champs!");
             }else{
 
                 CustomerDTO customerdto=new CustomerDTO(); 
-                customerdto.setNom(customerCodeTxt.getText());
+                customerdto.setcodeprof(customerCodeTxt.getText());
                 customerdto.setNom(customersNameTxt.getText());
                 customerdto.setEmail(locationTxt.getText());
                 customerdto.setPhone(phoneTxt.getText());

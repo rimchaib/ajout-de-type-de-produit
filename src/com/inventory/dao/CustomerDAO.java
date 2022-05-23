@@ -78,9 +78,9 @@ public class CustomerDAO {
                             rs=stmt.executeQuery(getAllCustomersInDescOrder);
                             if(rs.next()){
                                 oldcodeprof=rs.getString("codeprof");
-                                Integer scode=Integer.parseInt(oldcodeprof.substring(3));
+                                Integer scode=Integer.parseInt(oldcodeprof.substring(4));
                                 scode++;    
-                                codeprof="cus"+scode;
+                                codeprof="prof"+scode;
                             }
                         }
                             String insertCustomers = "INSERT INTO customers VALUES(null,?,?,?,?,?,?)";
@@ -106,12 +106,14 @@ public class CustomerDAO {
           try {
                         String updateCustomerDetails = "UPDATE customers SET Nom=?,Email=?,phone=?,CIN=?,Departement=? WHERE codeprof=?";
                         pstmt = (PreparedStatement) con.prepareStatement(updateCustomerDetails);
+                        
                         pstmt.setString(1, customerdto.getNom());
                         pstmt.setString(2, customerdto.getEmail());
                         pstmt.setString(3, customerdto.getPhone());
                         pstmt.setString(4, customerdto.getCIN());
                         pstmt.setString(5, customerdto.getDepartement());
-                        pstmt.setString(6, customerdto.getcodeprof());
+                        pstmt.setString(6 ,customerdto.getcodeprof());
+                        
                       
                         pstmt.executeUpdate();
                         JOptionPane.showMessageDialog(null, "Mis à jour avec succés!"); 
