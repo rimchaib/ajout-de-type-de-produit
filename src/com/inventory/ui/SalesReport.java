@@ -478,7 +478,7 @@ table.getColumnModel().getColumn(5).setMaxWidth(0);
                     productdto.setcodeproduit(productCodeTxt.getText());
                     Double sellingPrice=Double.parseDouble(sellingPriceTxt.getText());
                     Double totalRevenue = sellingPrice*Integer.parseInt(quantityTxt.getText());
-                    productdto.setTotalRevenue(totalRevenue);
+                   productdto.setTotalRevenue(totalRevenue);
                     productdto.setquantite(Integer.parseInt(quantityTxt.getText()));
                     new ProductDAO().sellProductDAO(productdto,u);
                     loadDatas();

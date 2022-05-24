@@ -472,10 +472,10 @@ table.getColumnModel().getColumn(3).setMaxWidth(0);
             JOptionPane.showMessageDialog(null,"Please fill all the fields!");
         }else{
             productdto.setProduit(productNameTxt.getText());
-            productdto.setCostPrice(Double.parseDouble(costPriceTxt.getText()));
-            productdto.setSellingPrice(Double.parseDouble(sellingPriceTxt.getText()));
+           productdto.setCostPrice(Double.parseDouble(costPriceTxt.getText()));
+           productdto.setSellingPrice(Double.parseDouble(sellingPriceTxt.getText()));
             productdto.setReference((brandTxt.getText()));
-            productdto.setTypedeproduit((TypedeproduitTxt.getText()));
+            productdto.setTypedeproduit(TypedeproduitTxt.getText());
             productdto.setUserId(userId);
             new ProductDAO().addProductDAO(productdto);
             loadDatas();
